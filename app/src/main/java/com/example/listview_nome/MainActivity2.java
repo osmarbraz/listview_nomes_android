@@ -22,29 +22,36 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //Associa os componentes aos atributos
+        // Associa os componentes aos atributos
         editTextNome = findViewById(R.id.editTextNome);
     }
 
+    /**
+     * Evento do botão salvar.
+     * @param v
+     */
     public void onClickBotaoSalvar(View v) {
-        //Retorna os dados do cliente
+        // Retorna os dados do cliente
         Intent data = new Intent();
         Bundle parms = new Bundle();
-        //Se o nome é vazio retorna cancelado
+        // Se o nome é vazio retorna cancelado
         if (editTextNome.getText().toString().equals("")) {
             setResult(RESULT_CANCELED);
         } else {
-            //Dados preenchido
+            // Dados preenchido
             parms.putString("nome", editTextNome.getText().toString());
             data.putExtras(parms);
             setResult(RESULT_OK, data);
         }
-        //Fecha a janela
+        // Fecha a janela
         finish();
     }
 
+    /**
+     * Evento do botão voltar
+     * @param v
+     */
     public void onClickBotaoVoltar(View v) {
-        //finish();
         setResult(RESULT_CANCELED);
         finish();
     }

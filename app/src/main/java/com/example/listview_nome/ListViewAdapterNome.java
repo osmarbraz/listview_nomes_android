@@ -37,25 +37,30 @@ public class ListViewAdapterNome extends BaseAdapter {
         return listaNomes.get(i);
     }
 
+    /**
+     * Obtêm os dados na posição de clique
+     * @param id Posição do item.
+     * @return
+     */
     @Override
-    public long getItemId(int i) {
+    public long getItemId(int id) {
         return 0;
     }
 
     /**
      * Atualiza os componentes da lista
-     * @param i
+     * @param posicao
      * @param view
      * @param viewGroup
      * @return
      */
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int posicao, View view, ViewGroup viewGroup) {
         View v = view;
         if (v == null) {
             v = activity.getLayoutInflater().inflate(R.layout.item_nome_view, viewGroup, false);
         }
-        String nome = listaNomes.get(i);
+        String nome = listaNomes.get(posicao);
         TextView textViewNome = (TextView) v.findViewById(R.id.textViewNome);
         textViewNome.setText(nome);
         return v;
@@ -67,8 +72,10 @@ public class ListViewAdapterNome extends BaseAdapter {
      * @param novo Um nome
      */
     public void adicionar(String novo) {
-        listaNomes.add(novo); //adiciona o item na ultima posicao
-        notifyDataSetChanged();// notifica que meus items foi alterado
+        // Adiciona o item na ultima posicao
+        listaNomes.add(novo);
+        // Notifica o ListView que os dados foram atualizados
+        notifyDataSetChanged();
     }
 
     /**
@@ -77,8 +84,9 @@ public class ListViewAdapterNome extends BaseAdapter {
      * @param posicao Posição do nome a ser excluído
      */
     public void remover(int posicao) {
-        listaNomes.remove(posicao); //remove o item na posicao desejada
+        // Remove o item na posicao desejada
+        listaNomes.remove(posicao);
+        // Notifica o ListView que os dados foram atualizados
         notifyDataSetChanged();
     }
-
 }

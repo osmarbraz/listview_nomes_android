@@ -25,23 +25,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Associa os componentes da interface as propriedades
+        // Associa os componentes da interface as propriedades
         botaoAdicionar = findViewById(R.id.buttonAdicionar);
         buttonFechar = findViewById(R.id.buttonFechar);
 
-        //Adiciona alguns nomes para popular a lista
+        // Adiciona alguns nomes para popular a lista
         listaNome.add("João");
         listaNome.add("Carlos");
         listaNome.add("Pedro");
         listaNome.add("Luiz");
 
-        //Cria o Adapter para a lista de nomes e o listView
+        // Cria o Adapter para a lista de nomes e o listView
         adapter = new ListViewAdapterNome(listaNome, this);
 
-        //Recupera o listView
+        // Recupera o listView
         listView = (ListView) findViewById(R.id.listView);
 
-        //Seta o adapter do listView
+        // Seta o adapter do listView
         listView.setAdapter(adapter);
     }
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
      * @param v
      */
     public void onClickBotaoAdicionar(View v) {
-        //Recupera o intennt para a tela2
+        // Recupera o intennt para a tela2
         Intent intent = new Intent(this, MainActivity2.class);
         // Abre a segunda tela
         startActivityForResult(intent, 0);
@@ -92,14 +92,14 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Executa no retorno das telas
+        // Executa no retorno das telas
         super.onActivityResult(requestCode, resultCode, data);
-        //Se o retorno foi Ok
+        // Se o retorno foi Ok
         if (resultCode == RESULT_OK) {
-            //Verifica se os dados foram preenchidos
+            // Verifica se os dados foram preenchidos
             if (data.hasExtra("nome")) {
                 String nome = data.getExtras().getString("nome");
-                //Adiciona os dados na lsita
+                // Adiciona os dados na lsita
                 adapter.adicionar(nome);
             }
         }
