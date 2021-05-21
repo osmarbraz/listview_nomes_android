@@ -45,11 +45,6 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public void onItemClick(View view, int position) {
-        String nome = adapter.getItem(position);
-        Toast.makeText(this, "Clique no nome: " + nome + " linha número: " + position, Toast.LENGTH_SHORT).show();
-    }
-
     /**
      * Evento do botão adicionar cliente
      *
